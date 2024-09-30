@@ -1,0 +1,23 @@
+#Mybatios-Spirng
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url:  jdbc:mysql://localhost:3306/nuc_2024_1_!1
+
+#MybatisPlus
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #map-underscore-to-camel-case: false
+
+
+#logback
+logging:
+  file:
+    name: operation.log
+server:
+  port: 8081
+
+

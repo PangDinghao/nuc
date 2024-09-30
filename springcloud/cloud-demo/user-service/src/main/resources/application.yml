@@ -1,0 +1,27 @@
+server:
+  port: 8083
+
+spring:
+  application: # ??????
+    name: userservice
+  datasource:
+    url: jdbc:mysql://localhost:3306/nuc_2024_1_16?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+## ?eureka????
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://127.0.0.1:10086/eureka
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.hwadee.user.pojo
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test_demo01.mapper.ZAreaMapper">
+    
+    <resultMap type="com.example.test_demo01.domain.ZArea" id="ZAreaResult">
+        <result property="id"    column="id"    />
+        <result property="languageType"    column="language_type"    />
+        <result property="areaName"    column="area_name"    />
+        <result property="parentId"    column="parent_id"    />
+        <result property="parentId2"    column="parent_id2"    />
+        <result property="parentId3"    column="parent_id3"    />
+        <result property="level"    column="level"    />
+        <result property="leaf"    column="leaf"    />
+    </resultMap>
+
+    <sql id="selectZAreaVo">
+        select id, language_type, area_name, parent_id, parent_id2, parent_id3, level,leaf from z_area
+    </sql>
+
+    <select id="selectZAreaList" parameterType="com.example.test_demo01.domain.ZArea" resultMap="ZAreaResult">
+        <include refid="selectZAreaVo"/>
+        <where>  
+            <if test="languageType != null  and languageType != ''"> and language_type = #{languageType}</if>
+            <if test="areaName != null  and areaName != ''"> and area_name like concat('%', #{areaName}, '%')</if>
+            <if test="parentId != null  and parentId != ''"> and parent_id = #{parentId}</if>
+            <if test="parentId2 != null  and parentId2 != ''"> and parent_id2 = #{parentId2}</if>
+            <if test="parentId3 != null  and parentId3 != ''"> and parent_id3 = #{parentId3}</if>
+            <if test="level != null "> and level = #{level}</if>
+        </where>
+    </select>
+
+    <update id="updateZArea" parameterType="com.example.test_demo01.domain.ZArea">
+        update z_area
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="leaf != null">leaf = #{leaf},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test_demo01.mapper.ExplainMessageMapper">
+    
+    <resultMap type="com.example.test_demo01.domain.ExplainMessage" id="ZAreaResult">
+        <result property="id"    column="id"    />
+        <result property="explainName"    column="explain_name"    />
+        <result property="applyNumberMax"    column="apply_number_max"    />
+        <result property="applyNumber"    column="apply_number"    />
+    </resultMap>
+
+    <select id="selectExplainMessage" resultMap="ZAreaResult">
+        select id, explain_name, apply_number_max, apply_number
+        from explain_message
+        where id = #{id};
+    </select>
+
+    <update id="applyExplain" parameterType="com.example.test_demo01.domain.ExplainMessage">
+        update explain_message
+        SET apply_number = apply_number + 1
+        where id = #{id} and apply_number = #{applyNumber}
+    </update>
+
+</mapper>

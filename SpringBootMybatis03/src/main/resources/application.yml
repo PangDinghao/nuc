@@ -1,0 +1,28 @@
+#SpringBoot?????
+server:
+  port: 8081
+
+#SpringBoot??SpringMVC???????????????
+#SpringBoor??Mybatis??
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url:  jdbc:mysql://localhost:3306/nuc_2024_1_!1
+
+#将mybatisplus相关日志输出
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#日志输出
+logging:
+  pattern:
+    console: '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr([%thread]) %clr(---){faint} %clr([%level]) %clr(%-80.80logger{79}-){cyan} %clr(%msg%n){faint}'
+  level:
+    root: info
+   # com.example.springbootmybatis03.controller : error
+  file:
+    name: test.log
